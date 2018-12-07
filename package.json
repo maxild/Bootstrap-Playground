@@ -7,12 +7,14 @@
     "repair-npm-dedupe": "cross-env-shell shx rm -rf package-lock.json && rm -rf \"node_modules/\" && npm install --no-optional && npm dedupe",
     "clean": "cross-env-shell shx rm -rf public",
     "css": "npm-run-all css-lint css-compile css-prefix css-minify",
+    "css-dev": "npm-run-all css-lint css-compile css-prefix",
     "css-lint": "stylelint --syntax scss \"assets/scss/*.scss\"",
     "css-compile": "cross-env-shell shx mkdir -p public/css && sass ./assets/scss/app.scss public/css/site.css",
     "css-prefix": "postcss --config build/postcss.config.js --replace \"public/**/*.css\" \"!public/**/*.min.css\"",
     "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output public/css/site.min.css public/css/site.css",
-    "watch-css": "nodemon --watch assets/scss/ --ext scss --exec \"npm run css-main\"",
-    "build": "postcss *.css --use autoprefixer -d build/"
+    "watch": "nodemon --watch assets/scss/ --ext scss --exec \"npm run css\"",
+    "watch-dev": "nodemon --watch assets/scss/ --ext scss --exec \"npm run css-dev\"",
+    "css-autoprefix": "postcss --use autoprefixer --replace \"public/**/*.css\" \"!public/**/*.min.css\""
   },
   "author": "Morten Maxild",
   "license": "MIT",
