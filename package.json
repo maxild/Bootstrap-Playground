@@ -4,10 +4,15 @@
   "description": "Playing with bootstrap v4.1.3 with Sass\"",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf build/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "npx sass ./styles.scss build/styles.css",
-    "build": "npx postcss *.css --use autoprefixer -d build/"
+    "repair-npm-dedupe": "cross-env-shell shx rm -rf package-lock.json && rm -rf \"node_modules/\" && npm install --no-optional && npm dedupe",
+    "clean": "cross-env-shell shx rm -rf public",
+    "css": "npm-run-all css-lint css-compile css-prefix css-minify",
+    "css-lint": "stylelint --syntax scss \"assets/scss/*.scss\"",
+    "css-compile": "cross-env-shell shx mkdir -p public/css && sass ./assets/scss/app.scss public/css/site.css",
+    "css-prefix": "postcss --config build/postcss.config.js --replace \"public/**/*.css\" \"!public/**/*.min.css\"",
+    "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output public/css/site.min.css public/css/site.css",
+    "watch-css": "nodemon --watch assets/scss/ --ext scss --exec \"npm run css-main\"",
+    "build": "postcss *.css --use autoprefixer -d build/"
   },
   "author": "Morten Maxild",
   "license": "MIT",
@@ -16,8 +21,18 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.4.2",
+    "clean-css-cli": "^4.2.1",
+    "cross-env": "^5.2.0",
     "jquery": "^3.3.1",
+    "nodemon": "^1.18.7",
+    "npm-run-all": "^4.1.5",
     "popper.js": "^1.14.6",
-    "postcss-cli": "^6.0.1"
+    "postcss-cli": "^6.0.1",
+    "shx": "^0.3.2",
+    "stylelint": "^9.9.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^2.0.0",
+    "stylelint-scss": "^3.4.1"
   }
 }
