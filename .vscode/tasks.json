@@ -1,0 +1,38 @@
+// Sass configuration
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "windows": {
+        "options": {
+            // Problem: VS Code inherits the environment from the shell you start it from.
+            //          Setting up 'Visual Studio 2017 Developer Command Prompt v15.9.3' logic
+            //          in my powershell profile takes to much time to be run for every 'run task'
+            "shell": {
+                "executable": "${env:windir}/System32/WindowsPowerShell/v1.0/powershell.exe",
+                //"args": [ "-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command" ]
+                "args": [ "-NoLogo", "-NoProfile", "-ExecutionPolicy", "RemoteSigned", "-Command" ]
+            }
+        }
+    },
+    //"problemMatcher" : ["$eslint-stylish"],
+    "tasks": [
+        {
+            "label": "Sass Compile",
+            "type": "shell",
+            // Run the sass-dart cli tool
+            "command": "sass ${file} ${fileBasename}.css",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            }
+        }
+    ]
+}
