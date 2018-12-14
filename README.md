@@ -9,6 +9,7 @@
 
 - [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 - [Can I Use](https://caniuse.com/)
+- [HTML5 Please](http://html5please.com/)
 
 ## Fonts
 
