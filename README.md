@@ -14,6 +14,16 @@
 ## Fonts
 
 - [Google Fonts](https://fonts.google.com/)
+- [CSS Font Stack](https://www.cssfontstack.com/)
+
+## Responsive
+
+CSS pixels vs Device pixels
+
+- check your device [here](https://www.mydevice.io/)
+- [Viewport sizes](http://viewportsizes.com/)
+- [Compare devices](https://www.mydevice.io/#compare-devices)
+- [Viewport meta tag](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag)
 
 ## Sass Tools
 
