@@ -16,6 +16,10 @@
 - [Google Fonts](https://fonts.google.com/)
 - [CSS Font Stack](https://www.cssfontstack.com/)
 
+## Favicon
+
+- [RealFaviconGenerator](https://realfavicongenerator.net/)
+
 ## Responsive
 
 CSS pixels vs Device pixels
